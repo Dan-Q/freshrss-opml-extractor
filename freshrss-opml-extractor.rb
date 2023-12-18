@@ -33,7 +33,11 @@ feeds = db.query("
   LEFT JOIN freshrss_admin_category ON feed.category=freshrss_admin_category.id
   INNER JOIN danq_category_export_mappings ON freshrss_admin_category.name=danq_category_export_mappings.in
 
-  AND feed.id IN (SELECT DISTINCT id_feed FROM freshrss_admin_entry WHERE `date` > UNIX_TIMESTAMP(SUBDATE(NOW(), INTERVAL 1 YEAR)))
+  AND feed.id IN (
+    SELECT DISTINCT id_feed FROM freshrss_admin_entry
+    WHERE `date` > UNIX_TIMESTAMP(SUBDATE(NOW(), INTERVAL 1 YEAR))
+    AND ttl >= 0
+  )
 
   ORDER BY
     IF(danq_category_export_mappings.order IS NULL, 1, 0),
