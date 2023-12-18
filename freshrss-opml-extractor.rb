@@ -64,6 +64,7 @@ categories.each do |category|
   category_outline = Nokogiri::XML::Node.new('outline', opml)
   category_outline['text'] = category['cat_name']
   html_section = Nokogiri::XML::Node.new('section', html)
+  html_section['class'] = "blogroll blogroll-#{category['cat_name'].downcase.gsub(/[^a-z0-9]/, '')}"
   html_section.add_child "<h2>#{category['cat_name']}</h2>"
   html_section.add_child("<p>#{category['cat_desc']}</p>") if category['cat_desc']
   html_section.add_child '<ul />'
