@@ -2,7 +2,7 @@
 
 Used to generate content used by https://danq.me/blogroll.
 
-Probably no use to anybody else whatsoever.
+Super opinionated. Assumes your username is `admin`. Probably no use to anybody else whatsoever.
 
 ## Setup
 
@@ -20,6 +20,8 @@ COLLATE='utf8mb4_0900_ai_ci'
 ENGINE=InnoDB
 ;
 ```
+
+Add a `VARCHAR` column to your `freshrss_admin_feed` table to store some 88×31s. Call it `q26_image_url`.
 
 ## Usage
 
